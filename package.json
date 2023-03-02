@@ -1,0 +1,29 @@
+{
+    "name": "MSymptoms",
+    "version": "1.0.0",
+    "description": "App for tracking MS symptoms",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+      "start": "node backend/server",
+      "server": "nodemon backend/server",
+      "client": "npm start --prefix frontend",
+      "dev": "concurrently \"npm run server\" \"npm run client\"",
+      "data:import": "node backend/seeder",
+      "data:destroy": "node backend/seeder -d",
+      "heroku-postbuild": "npm run install-client && npm run install-server"
+
+    },
+  "keywords": [],
+  "author": "Nataliia Azarnykh",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
