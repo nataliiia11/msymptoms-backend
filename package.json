@@ -7,8 +7,7 @@
     "start": "node server.js",
     "backend": "nodemon server.js",
     "frontend": "npm start --prefix frontend",
-    "both": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "both": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "Nataliia Azarnykh",

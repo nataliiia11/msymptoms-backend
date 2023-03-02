@@ -17,6 +17,7 @@ const errorHandler = require("./middleware/errorMiddleware");
 const helmet = require("helmet");
 const jsStringEscape = require("js-string-escape");
 var encodeTheJS = jsStringEscape(`Quotes (\", \'`);
+
 const app = express();
 
 // Middlewares
@@ -24,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 //protects from NoSQL attacks
 //app.use(sanitize());
@@ -40,13 +41,14 @@ const limited = expressRateLimit({
 });
 
 //app.use(limited);
-app.use(hpp());
-const html = escape("receving a $pecial $cr1//pt");
+//app.use(hpp());
+//const html = escape("receving a $pecial $cr1//pt");
 
 //enable cors
 app.use(
   cors({
-    origin: "https://msymptoms-app.onrender.com",
+    origin: ["http://localhost:3000", "https://msymptoms-app.onrender.com"],
+    credentials: true,
   })
 );
 
@@ -63,13 +65,10 @@ app.get("/", (req, res) => {
 // Error Handler
 app.use(errorHandler);
 const http = require("http");
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5001;
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on ${PORT}`);
