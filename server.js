@@ -46,7 +46,7 @@ const html = escape("receving a $pecial $cr1//pt");
 //enable cors
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://msymptoms-app.onrender.com"],
+    origin: "https://msymptoms-app.onrender.com",
   })
 );
 
@@ -62,8 +62,9 @@ app.get("/", (req, res) => {
 
 // Error Handler
 app.use(errorHandler);
+const http = require("http");
+const PORT = process.env.PORT || 10000;
 
-const PORT = process.env.PORT;
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,

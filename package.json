@@ -4,8 +4,8 @@
   "description": "backend part of MSymptoms application",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "backend": "nodemon backend/server.js",
+    "start": "node server.js",
+    "backend": "nodemon server.js",
     "frontend": "npm start --prefix frontend",
     "both": "concurrently \"npm run backend\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
