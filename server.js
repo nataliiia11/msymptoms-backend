@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
 // Error Handler
 app.use(errorHandler);
 const http = require("http");
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
 
 mongoose
   .connect(process.env.MONGO_URI)
