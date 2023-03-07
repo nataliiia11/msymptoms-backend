@@ -33,10 +33,12 @@ app.disable("x-powered-by");
 //to prevent DNS attacks. Helmet adds some headers to requests
 app.use(helmet());
 //prevent XSS attacks
-app.use(clean);
+//clean is NOT used here because it prevents
+//user from the login
+//app.use(clean);
 
 const limited = expressRateLimit({
-  windowMs: 10 * 60 * 1000, //10 mins
+  windowMs: 5 * 60 * 1000, //5 mins
   max: 1,
 });
 
