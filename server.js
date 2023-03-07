@@ -41,11 +41,10 @@ const limited = expressRateLimit({
   windowMs: 5 * 60 * 1000, //5 mins
   max: 1,
 });
-
-app.use(limited);
+//disable limitation to ease testing
+//app.use(limited);
 app.use(hpp());
 const html = escape("receving a $pecial $cr1//pt");
-
 //enable cors
 app.use(
   cors({
