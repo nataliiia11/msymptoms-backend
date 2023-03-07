@@ -45,6 +45,15 @@ const limited = expressRateLimit({
 //app.use(limited);
 app.use(hpp());
 const html = escape("receving a $pecial $cr1//pt");
+
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://msymptoms-app.onrender.com"
+  );
+  next();
+});
+
 //enable cors
 app.use(
   cors({
