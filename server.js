@@ -25,24 +25,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //protects from NoSQL attacks
-//app.use(sanitize());
-//app.disable("x-powered-by");
+app.use(sanitize());
+app.disable("x-powered-by");
 //to prevent DNS attacks. Helmet adds some headers to requests
-//app.use(helmet());
+app.use(helmet());
 //prevent XSS attacks
-//app.use(clean);
+app.use(clean);
 
 const limited = expressRateLimit({
   windowMs: 10 * 60 * 1000, //10 mins
   max: 1,
 });
 
-//app.use(limited);
-//app.use(hpp());
-//const html = escape("receving a $pecial $cr1//pt");
+app.use(limited);
+app.use(hpp());
+const html = escape("receving a $pecial $cr1//pt");
 
 //enable cors
 app.use(
